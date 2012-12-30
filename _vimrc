@@ -69,19 +69,31 @@ if expand("%:e") == "py"
 	iab <expr> dtsss strftime("%F")
 	iab <expr> foutsss expand("%")
 	imap <F11> #!/usr/bin/env python<cr># coding=utf-8<cr>#--------------------------------------------------------------------------<cr># 文件名:       foutsss <cr># 说明：        目的、作用说明<cr>#<cr># 版本：        0.01<cr># 作者：        xiao<cr>#<cr># 创建时间：    dtsss <cr># 许可证：      Apache License V2.0<cr>#--------------------------------------------------------------------------<cr><cr>
+    imap <F9> <esc>0/def <cr>wywo<cr><backspace>#------------------------------------------ End def <esc>p:nohls<cr>a()<esc>2ko"""<cr>"""<esc>O
 
-	imap <F9> <esc>o<backspace>#------------------------------------------ End def <esc>0?def <cr>wyw/#------------------------------------------ End def<cr>$p:nohls<cr>a()<cr><cr><esc>3kO## 方法注释<cr>#<cr>#  @param<cr>#  @return<cr>#<esc>jzzo
+	"imap <F9> <esc>o<backspace>#------------------------------------------ End def <esc>0?def <cr>wyw/#------------------------------------------ End def<cr>$p:nohls<cr>a()<cr><cr><esc>3kO## 方法注释<cr>#<cr>#  @param<cr>#  @return<cr>#<esc>jzzo
+    imap <F10> <esc>0/class <cr>wywo<cr><backspace>#-------------------------------------------------- End class <esc>p:nohls<cr><esc>2ko"""<cr>"""<esc>O
 
-	imap <F10> <esc>o<backspace>#------------------------------------------------------ End class <esc>0?class <cr>wyw/#------------------------------------------------------ End class<cr>$p:nohls<cr>a()<cr><cr><esc>3kO## 类注释<cr>#<esc>jo<cr>
+	"imap <F10> <esc>o<backspace>#------------------------------------------------------ End class <esc>0?class <cr>wyw/#------------------------------------------------------ End class<cr>$p:nohls<cr>a()<cr><cr><esc>3kO## 类注释<cr>#<esc>jo<cr>
 
 	nmap <F5> :w<cr>:!python %
 endif
-nmap <C-n> ^x
 
 " 快捷键
 imap { {}<esc>i
+imap } <c-r>=ClosePair('}')<CR>
 imap ( ()<ESC>i
+imap ) <c-r>=ClosePair(')')<CR>
 imap [ []<ESC>i
+imap ] <c-r>=ClosePair(']')<CR>
+
+function ClosePair(char)
+    if getline('.')[col('.') - 1] == a:char
+        return "\<Right>"
+    else
+        return a:char
+    endif
+endf
 
 au BufNewFile,BufRead *.ini,*/.hgrc,*/.hg/hgrc setf ini
 " TxtBrowser          高亮TXT文本文件

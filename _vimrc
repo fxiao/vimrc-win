@@ -1,5 +1,5 @@
 set nocompatible                  " 关闭Vi兼容模式
-"set encoding=utf-8                " 设置编码为utf-8
+set encoding=utf-8                " 设置编码为utf-8
 set fileencodings=utf-8,gbk
 set fileencoding=utf-8
 set helplang=cn                   " 帮助文件为中文

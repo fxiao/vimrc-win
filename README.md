@@ -15,3 +15,5 @@ vimrc-win
 * vimwiki
 * voom
 * zencoding
+
+P.S. 自备 ctags.exe
